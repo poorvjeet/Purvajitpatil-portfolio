@@ -16,7 +16,7 @@ export const PROFILES = [
   { 
     name: "GitHub", 
     handle: "@poorvjeet", 
-    sub: "Open-source projects", 
+    sub: "Portfolio & personal projects", 
     url: "https://github.com/poorvjeet", 
     accent: "rgba(255,255,255,.85)", 
     icon: <GH s={20}/> 
@@ -24,7 +24,7 @@ export const PROFILES = [
   { 
     name: "LinkedIn", 
     handle: "Purvajit Patil", 
-    sub: "Professional network", 
+    sub: "Work history & recommendations", 
     url: "http://www.linkedin.com/in/purvajit-patil-2100b3241", 
     accent: "#60a5fa", 
     icon: <LN s={20}/> 

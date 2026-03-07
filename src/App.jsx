@@ -52,10 +52,11 @@ export default function App() {
     setOpen(false);
   }, []);
 
-  const W = { maxWidth: 1120, margin: "0 auto", padding: "0 clamp(16px,3vw,28px)" };
-  const SP = { padding: "88px 0" };
-  const LBL = { fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.15em", color: "var(--muted)", textTransform: "uppercase", marginBottom: 12 };
-  const H2 = { fontFamily: "'Geist',sans-serif", fontWeight: 300, fontSize: "clamp(28px,5vw,50px)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 10, color: "var(--fg)" };
+  // Named style variables (no more magic single letters)
+  const wrapperStyle = { maxWidth: 1120, margin: "0 auto", padding: "0 clamp(16px,3vw,28px)" };
+  const sectionPadding = { padding: "88px 0" };
+  const labelStyle = { fontFamily: "'Geist Mono',monospace", fontSize: 11, letterSpacing: "0.15em", color: "var(--muted)", textTransform: "uppercase", marginBottom: 12 };
+  const headingStyle = { fontFamily: "'Geist',sans-serif", fontWeight: 300, fontSize: "clamp(28px,5vw,50px)", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 10, color: "var(--fg)"};
 
   return (
     <div className="grain" style={{ background: "var(--bg)", minHeight: "100vh", overflowX: "hidden" }}>
@@ -107,7 +108,8 @@ export default function App() {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <MagneticBtn href="mailto:poorvjeet01@gmail.com"
+            {/* Resume button - links to PDF */}
+            <MagneticBtn href="/resume.pdf" target="_blank"
               style={{
                 padding: "8px 18px", borderRadius: 8, fontSize: 13, textDecoration: "none",
                 background: "var(--gls)", border: "1px solid var(--bdr)", color: "var(--fg)",
@@ -170,16 +172,16 @@ export default function App() {
               </span>
             </div>
 
-            {/* Big headline with word reveal */}
+            {/* Big headline with word reveal - IMPACTFUL HOOK */}
             <div className="float-anim f1" style={{ marginBottom: 20 }}>
               <h1 style={{
                 fontFamily: "'Geist',sans-serif", fontWeight: 300, lineHeight: 1.08,
                 fontSize: "clamp(38px,8vw,80px)", letterSpacing: "-0.03em"
               }}>
-                <WordReveal text="Full Stack Developer &" delay={100} />
+                <WordReveal text="I build full-stack" delay={100} />
                 <br />
                 <span className="grad-text" style={{ fontWeight: 300, fontSize: "clamp(38px,8vw,80px)" }}>
-                  <WordReveal text="MERN Stack Engineer" delay={300} />
+                  <WordReveal text="products — fast & clean" delay={300} />
                 </span>
               </h1>
             </div>
@@ -189,8 +191,8 @@ export default function App() {
               fontSize: "clamp(15px,2.2vw,19px)", color: "var(--muted)", lineHeight: 1.75,
               maxWidth: 600, margin: "0 auto 40px"
             }}>
-              Building modern full-stack applications with React, Node.js &amp; MongoDB while
-              solving hundreds of algorithmic challenges on competitive platforms.
+              Full Stack Developer specializing in MERN Stack. Building production-ready 
+              applications from scratch with clean architecture.
             </p>
 
             {/* Magnetic CTAs */}
@@ -219,7 +221,7 @@ export default function App() {
 
             <div className="f4 div" />
 
-            {/* Stats */}
+            {/* Stats - ENGINEER FOCUSED */}
             <div className="f4 stats-flex" style={{
               display: "flex", justifyContent: "center",
               alignItems: "center", gap: 48, paddingTop: 44, flexWrap: "wrap"
@@ -243,11 +245,11 @@ export default function App() {
         <MarqueeTicker items={TICKER_ITEMS} />
 
         {/* ════ PROJECTS ════ */}
-        <section id="projects" style={SP}>
-          <div style={W}>
+        <section id="projects" style={sectionPadding}>
+          <div style={wrapperStyle}>
             <ScrollReveal>
-              <p style={LBL}>// Projects</p>
-              <h2 style={H2}>
+              <p style={labelStyle}>// Projects</p>
+              <h2 style={headingStyle}>
                 Things I've <span className="grad-text">built</span>
               </h2>
               <p style={{ color: "var(--muted)", fontSize: 15, fontWeight: 300, marginBottom: 52, maxWidth: 480, lineHeight: 1.65 }}>
@@ -295,7 +297,7 @@ export default function App() {
                         {p.tags.map(t => <span key={t} className="sb" style={{ padding: "3px 9px", borderRadius: 5 }}>{t}</span>)}
                       </div>
                       <div style={{ display: "flex", gap: 8, marginTop: "auto" }}>
-                        <MagneticBtn href={p.url} target="_blank"
+                        <MagneticBtn href={p.github} target="_blank"
                           style={{
                             flex: 1, gap: 6, padding: "9px 10px", borderRadius: 8, fontSize: 12, textDecoration: "none",
                             background: "var(--gls)", border: "1px solid var(--bdr)", color: "var(--muted)",
@@ -303,7 +305,7 @@ export default function App() {
                           }}>
                           <GH s={13} /> GitHub
                         </MagneticBtn>
-                        <MagneticBtn href={p.url} target="_blank"
+                        <MagneticBtn href={p.live} target="_blank"
                           style={{
                             flex: 1.4, gap: 5, padding: "9px 10px", borderRadius: 8, fontSize: 12, textDecoration: "none",
                             background: `linear-gradient(135deg,${p.color}20,${p.color}10)`,
@@ -322,14 +324,14 @@ export default function App() {
           </div>
         </section>
 
-        <div style={W}><div className="div" /></div>
+        <div style={wrapperStyle}><div className="div" /></div>
 
         {/* ════ SKILLS ════ */}
-        <section id="skills" style={SP}>
-          <div style={W}>
+        <section id="skills" style={sectionPadding}>
+          <div style={wrapperStyle}>
             <ScrollReveal>
-              <p style={LBL}>// Skills</p>
-              <h2 style={H2}>My <span className="grad-text">tech stack</span></h2>
+              <p style={labelStyle}>// Skills</p>
+              <h2 style={headingStyle}>My <span className="grad-text">tech stack</span></h2>
               <p style={{ color: "var(--muted)", fontSize: 15, fontWeight: 300, marginBottom: 52, maxWidth: 420, lineHeight: 1.65 }}>
                 Technologies and tools I use daily to ship products.
               </p>
@@ -369,7 +371,7 @@ export default function App() {
               ))}
             </div>
 
-            {/* Education card */}
+            {/* Education card - CGPA reduced size */}
             <ScrollReveal delay={220}>
               <div className="gc" style={{
                 borderRadius: 14, padding: "24px 28px", marginTop: 20,
@@ -388,8 +390,7 @@ export default function App() {
                   </p>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0 }}>
-                  <div style={{ fontFamily: "'Geist',sans-serif", fontWeight: 300, fontSize: 38, letterSpacing: "-0.03em", color: "var(--fg)" }}>7.81</div>
-                  <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 10, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.1em" }}>CGPA</div>
+                  <div style={{ fontFamily: "'Geist',sans-serif", fontWeight: 300, fontSize: 26, letterSpacing: "-0.03em", color: "var(--fg)" }}>7.81 CGPA</div>
                 </div>
               </div>
             </ScrollReveal>
@@ -417,11 +418,11 @@ export default function App() {
         <div style={{ height: 1, background: "linear-gradient(90deg,transparent,var(--bdr),transparent)" }} />
 
         {/* ════ PROFILES ════ */}
-        <section id="profiles" style={SP}>
-          <div style={W}>
+        <section id="profiles" style={sectionPadding}>
+          <div style={wrapperStyle}>
             <ScrollReveal>
-              <p style={LBL}>// Coding Profiles</p>
-              <h2 style={H2}>Where I <span className="grad-text">compete</span></h2>
+              <p style={labelStyle}>// Coding Profiles</p>
+              <h2 style={headingStyle}>Where I <span className="grad-text">compete</span></h2>
               <p style={{ color: "var(--muted)", fontSize: 15, fontWeight: 300, marginBottom: 52, maxWidth: 420, lineHeight: 1.65 }}>
                 Sharpening algorithmic thinking through consistent problem-solving.
               </p>
@@ -458,18 +459,17 @@ export default function App() {
           </div>
         </section>
 
-        <div style={W}><div className="div" /></div>
+        <div style={wrapperStyle}><div className="div" /></div>
 
         {/* ════ CONTACT ════ */}
         <section id="contact" style={{ padding: "88px 0 130px" }}>
-          <div style={{ ...W, maxWidth: 660 }}>
+          <div style={{ ...wrapperStyle, maxWidth: 660 }}>
             <ScrollReveal style={{ textAlign: "center" }}>
-              <p style={{ ...LBL, textAlign: "center" }}>// Contact</p>
-              <h2 style={{ ...H2, textAlign: "center", marginBottom: 14 }}>
+              <p style={{ ...labelStyle, textAlign: "center" }}>// Contact</p>
+              <h2 style={{ ...headingStyle, textAlign: "center", marginBottom: 14 }}>
                 Let's <span className="grad-text">work together</span>
               </h2>
               <p style={{ color: "var(--muted)", fontSize: 15, fontWeight: 300, lineHeight: 1.75, marginBottom: 48, textAlign: "center" }}>
-                Open to internships, freelance work, and full-time roles.
                 Have a project? Let's build something great.
               </p>
 
@@ -531,17 +531,17 @@ export default function App() {
           </div>
         </section>
 
-        {/* ════ FOOTER ════ */}
+        {/* ════ FOOTER - Year updated to 2025 ════ */}
         <footer style={{
           borderTop: "1px solid var(--bdr)", padding: "24px clamp(16px,3vw,28px)",
           display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12
         }}>
           <p style={{ fontFamily: "'Geist Mono',monospace", fontSize: 12, color: "var(--muted)" }}>
-            © 2024 <span style={{ color: "var(--fg)" }}>Purvajit Patil</span>
+            © 2025 <span style={{ color: "var(--fg)" }}>Purvajit Patil</span>
           </p>
           <div style={{ display: "flex", gap: 20 }}>
             {NAV.map(n => (
-<button key={n.h} onClick={() => go(n.h)}
+              <button key={n.h} onClick={() => go(n.h)}
                 style={{
                   background: "none", border: "none", cursor: "none", fontFamily: "'Geist Mono',monospace",
                   fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em",
